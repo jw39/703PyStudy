@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from pandas import read_excel
+from pandas import read_excel #왜 read_excel 사라졌냐
 # df = pd.DataFrame(data='', index='', columns='')
 
 
