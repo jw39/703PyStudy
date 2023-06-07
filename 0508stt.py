@@ -1,4 +1,5 @@
 import speech_recognition as sr
+#sr은 간편한 이름
 
 r = sr.Recognizer()
 with sr.Microphone() as source:
