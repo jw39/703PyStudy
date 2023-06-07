@@ -3,7 +3,7 @@ from playsound import playsound
 import speech_recognition as sr
 import os
 import openai
-import random
+import random #random 어디감
 
 openai.api_key = "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"
 
