@@ -4,6 +4,7 @@ from gtts import gTTS
 from playsound import playsound
 import speech_recognition as sr
 import openai
+#챗gpt대화
 
 # OpenAI API 인증키 설정
 openai.api_key = "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"
