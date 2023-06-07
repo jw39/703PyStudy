@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title>웹 페이지 제목</title>
+    </head>
+    <body>
+        <div class="content">
+            <h1>이곳은 웹 페이지의 제목입니다.</h1>
+            <p>이곳은 웹 페이지의 내용입니다.</p>
+        </div>
+    </body>
+</html>
+
+<!--print(soup.prettify())
+객체에 저장된 html 내용을 확인 -->
+
+<h1 id="title">
+    웹 크롤링 테스트
+   </h1>
+   <div class="top">
+    <ul class="menu">
+     <li>
+      <a class="login" href="http://www.ddd.co.kr/member/login.html">
+       로그인
+      </a>
+     </li>
+    </ul>
+    <ul class="brand">
+     <li>
+      <a href="http://www.ddd.co.kr/media/">
+       웹 크롤링
+      </a>
+     </li>
+     <li>
+      <a href="http://www.ddd.co.kr/test/">
+       웹 크롤링 자료
+      </a>
+     </li>
+    </ul>
+   </div>
+   
+
+
+<!--1.태그 파싱하기 - 지정된 한 개의 태그만 파싱-->
+   <h1 id="title">웹 크롤링 테스트</h1>
+>>> tag_h1 = soup.h1
+>>> tag_h1
+<h1 id="title">웹 크롤링 테스트</h1>
+>>> tag_div = soup.div
+>>> tag_div
+<div class="top"><ul class="menu"><li><a class="login" href="http://www.
+ddd.co.kr/member/login.html">로그인</a></li></ul><ul class="brand"><li><a
+href="http://www.ddd.co.kr/media/">웹 크롤링</a></li><li><a href="http://www.
+ddd.co.kr/test/">웹 크롤링 자료</a></li></ul></div>
+>>> tag_ul = soup.ul
+>>> tag_ul
+<ul class="menu"><li><a class="login" href="http://www.ddd.co.kr/member/
+login.html">로그인</a></li></ul>
+>>> tag_li = soup.li
+>>> tag_li
+<li><a class="login" href="http://www.ddd.co.kr/member/login.html">로그인</a></li>
+>>> tag_a = soup.a
+>>> tag_a
+<a class="login" href="http://www.ddd.co.kr/member/login.html">로그인</a>
+
+
+<!--2.태그 파싱하기 - 지정된 태그를 모두 파싱-->
+>>> tag_ul_all = soup.find_all("ul")
+>>> tag_ul_all
+[<ul class="menu"><li><a class="login" href="http://www.ddd.co.kr/member/login.html">로그인</a></li></ul>,<ul class="brand"><li><a href="http://www.ddd.co.kr/media/">웹 크롤링</a></li><li><a href="http://www.ddd.co.kr/test/">웹 크롤링 자료</a></li></ul>]
+>>> tag_li_all = soup.find_all("li")
+>>> tag_li_all
+[<li><a class="login" href="http://www.ddd.co.kr/member/login.html">로그인</a></li>,<li><a href="http://www.ddd.co.kr/media/">웹 크롤링</a></li>,<li><a href="http://www.ddd.co.kr/test/">웹 크롤링 자료</a></li>]
+>>> tag_a_all = soup.find_all("a")
+>>> tag_a_all
+[<a class="login" href="http://www.ddd.co.kr/member/login.html">로그인</a>,<a href="http://www.ddd.co.kr/media/">웹 크롤링</a>,<a href="http://www.ddd.co.kr/test/">웹 크롤링 자료</a>]
+
+
+<!--3.속성을 이용하여 파싱-->
+>>> tag_a.attrs
+{'href': 'http://www.ddd.co.kr/member/login.html', 'class': ['login']}
+>>> tag_a['href']
+'http://www.ddd.co.kr/member/login.html'
+>>> tag_a['class']
+['login']
+>>> tag_ul_2 = soup.find('ul', attrs={'class':'brand'})
+>>> tag_ul_2
+<ul class="brand"><li><a href="http://www.ddd.co.kr/media/">웹 크롤링</a></
+li><li><a href="http://www.ddd.co.kr/test/">웹 크롤링 자료</a></li></ul>
+>>> title = soup.find(id="title")
+>>> title
+<h1 id="title">웹 크롤링 테스트</h1>
+>>> title.string
+'웹 크롤링 테스트'
+>>> li_list = soup.select("div>ul.brand>li")
+>>> li_list
+[<li><a href="http://www.ddd.co.kr/media/">웹 크롤링</a></li>,<li><a
+href="http://www.ddd.co.kr/test/">웹 크롤링 자료</a></li>]
+>>> for li in li_list: [Enter]
+            print(li.string) [Enter]
+            [Enter]
+웹 크롤링
+웹 크롤링 자료
